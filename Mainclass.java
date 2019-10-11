@@ -5,5 +5,6 @@ public class Mainclass {
 		Player g = new Player("G", 100);
 		
 		System.out.println(g.getInventory());
+		validIDs.printValidIDs();
 	}
 }
