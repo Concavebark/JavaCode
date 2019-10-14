@@ -1,4 +1,4 @@
-package gameBuilds;
+package game;
 
 public class Player extends Creature {
 	private static int[] inventory = new int[15];
@@ -6,9 +6,10 @@ public class Player extends Creature {
 		super(name, health);
 	}
 	
+	@SuppressWarnings("static-access")
 	public int getInventory() {
 		for (int i = 0; i < inventory.length;) {
-			return inventory[i];
+			return this.inventory[i]; // Keeps returning null, idk what to do about it..
 		}
 		return 0; // Return Value of 0 expresses empty inventory
 	}

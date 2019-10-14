@@ -1,4 +1,4 @@
-package gameBuilds;
+package game;
 
 public class Creature {
 	public String name;

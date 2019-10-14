@@ -1,10 +1,15 @@
-package gameBuilds;
+package game;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class validIDs {
-	public static Map<String, String> idList = new HashMap<String, String>() {{
+	public static Map<String, String> idList = new HashMap<String, String>() {/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+	{
 		put("1", "Stick");
 		put("2", "Stone");
 	}};
