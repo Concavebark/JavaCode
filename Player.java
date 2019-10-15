@@ -1,28 +1,44 @@
 package game;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player extends Creature {
-	private static int[] inventory = new int[15];
+	public List<String> inv = new ArrayList<>(); 
+	/*
+	*	Possibly develop method of keeping item stacks, 
+	*	possibly with an Item class stored in an array. 
+	*	do more research.
+	*/
+	
+	public void setName(String newPlayerName) {
+		this.name = newPlayerName;
+	}
+	
+	public void storeInInv(String itemName) {
+		inv.add(itemName);
+	}
+	
+	public List<String> getInventory() {		
+		try {
+			return inv;
+		} catch (Exception IndexOutOfBounds) {
+			return null;
+		}
+	}
+	
+	public String getSpecificInv(String indexStr) {
+		try {
+			int index = Integer.parseInt(indexStr);
+			index = index - 1;
+			return inv.get(index);
+		}	
+		catch (Exception IndexOutOfBounds) {
+			return "There are no items in that slot.";
+		}
+	}
+	
 	public Player(String name, int health) {
 		super(name, health);
-	}
-	
-	@SuppressWarnings("static-access")
-	public int getInventory() {
-		for (int i = 0; i < inventory.length;) {
-			return this.inventory[i]; // Keeps returning null, idk what to do about it..
-		}
-		return 0; // Return Value of 0 expresses empty inventory
-	}
-	
-	public void addToInventory(int itemID) {
-		if (inventory.length <= 15) {
-			int endOfInv = inventory.length - 1;
-			inventory[endOfInv] = itemID;
-		} else if (inventory.length > 15) {
-			System.out.println("Inventory Full!");
-			//Drop statement would go here
-		} else {
-			System.out.println("I have no idea what happenend, how'd you get here");
-		}
 	}
 }
