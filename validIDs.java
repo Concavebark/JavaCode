@@ -5,14 +5,21 @@ import java.util.Map;
 
 public class validIDs {
 	public static Map<String, String> idList = new HashMap<String, String>() {
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = 1L;
 
 	{
 		put("1", "Stick"); 
 		put("2", "Stone");
+		put("3", "Wood");
+	}};
+	
+	public static Map<String, String> craftables = new HashMap<String, String>() {
+		private static final long serialVersionUID = 2L;
+
+	{
+		put("1", "Wood Sword");
+		put("2", "Stone Sword"); 
+		put("3", "Stick");
 	}};
 	
 	public static void printValidIDs() {

@@ -20,11 +20,7 @@ public class Player extends Creature {
 	}
 	
 	public List<String> getInventory() {		
-		try {
-			return inv;
-		} catch (Exception IndexOutOfBounds) {
-			return null;
-		}
+		return inv;
 	}
 	
 	public String getSpecificInv(String indexStr) {

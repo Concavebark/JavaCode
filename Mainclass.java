@@ -1,7 +1,7 @@
 package game;
 
 import java.util.Scanner;
-import java.util.Random;;
+import java.util.Random;
 
 public class Mainclass {
 	public static Player player = new Player("No Name", 100);
@@ -9,6 +9,7 @@ public class Mainclass {
 	public static String itemOnFloor;
 
 	public static void main(String[] args) {
+		System.out.println("Available commands: attack, help, check inventory, pickup, wait, exit");
 		gameLoop();
 	}
 	
@@ -48,8 +49,17 @@ public class Mainclass {
 	}
 	
 	public static void actionParse(String action) {
+		String[] splitString = action.split(" ");
+		System.out.println(splitString[0]);
+		switch(splitString[0]) {
+			default:
+				System.out.println("Yesn't");
+		}
 		switch(action) {
 			case "attack":
+				break;
+			case "help":
+				System.out.println("Available commands: attack, help, check inventory, pickup, wait, exit");
 				break;
 			case "check inventory":
 				System.out.println(player.getInventory());
