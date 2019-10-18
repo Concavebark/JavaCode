@@ -23,6 +23,17 @@ public class Player extends Creature {
 		return inv;
 	}
 	
+	public int numInInv(String itemName) {
+		int itemCount = 0;
+		for (int i = 0; i < inv.size();) {
+			if (inv.get(i).equals(itemName)) {
+				itemCount = itemCount + 1;
+			}
+			i = i + 1;
+		}
+		return itemCount;
+	}
+	
 	public String getSpecificInv(String indexStr) {
 		try {
 			int index = Integer.parseInt(indexStr);

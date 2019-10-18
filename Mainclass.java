@@ -10,7 +10,12 @@ public class Mainclass {
 
 	public static void main(String[] args) {
 		System.out.println("Available commands: attack, help, check inventory, pickup, wait, exit");
+		itemInit();
 		gameLoop();
+	}
+	
+	public static void itemInit() {
+		
 	}
 	
 	public static String peekInv() {
@@ -48,20 +53,42 @@ public class Mainclass {
 		gameLoop();
 	}
 	
+	public static void crafting(String[] splitString) {
+		System.out.println("Entered crafting function");
+		// 0 = adjective, 1 = noun
+		String adjective = splitString[1];
+		String item = splitString[2];
+		if (adjective.equals("wood") || adjective.equals("wooden")) {
+			//sword, shield
+			if (item.equals("sword")) {
+				// check if player has 2 wood and 1 stick
+				if (player.numInInv("wood") >= 2 && player.numInInv("stick") >= 1) {
+					System.out.println("MAKA SWOOORD");
+				}
+			} else if (item.equals("shield")) {
+				// no clue
+				System.out.println("You got here.");
+			}
+		}
+	}
+	
+
 	public static void actionParse(String action) {
 		String[] splitString = action.split(" ");
-		System.out.println(splitString[0]);
 		switch(splitString[0]) {
-			default:
-				System.out.println("Yesn't");
-		}
-		switch(action) {
+			case "craft":
+				if (player.getInventory() != null) {
+					crafting(splitString);
+				} else {
+					System.out.println("Your Inventory is Empty!");
+				}
+				break;
 			case "attack":
 				break;
 			case "help":
 				System.out.println("Available commands: attack, help, check inventory, pickup, wait, exit");
 				break;
-			case "check inventory":
+			case "check":
 				System.out.println(player.getInventory());
 				break;
 			case "pickup":

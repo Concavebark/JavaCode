@@ -11,15 +11,21 @@ public class validIDs {
 		put("1", "Stick"); 
 		put("2", "Stone");
 		put("3", "Wood");
+		put("4", "Wood Sword");
+		put("5", "Wood Shield");
+		put("6", "Stone Sword");
+		put("7", "Stone Shield");
 	}};
 	
-	public static Map<String, String> craftables = new HashMap<String, String>() {
+	static String[] a = new String[] {"wood", "wood", "stick"}; 
+	// maybe build a class to deal with a recipe that is then stored in the Item
+	final static Item woodSword = new Item("wood sword", 4, a);
+	
+	public static Map<Integer, Item> itemList = new HashMap<Integer, Item>() {
 		private static final long serialVersionUID = 2L;
 
 	{
-		put("1", "Wood Sword");
-		put("2", "Stone Sword"); 
-		put("3", "Stick");
+		put(4, woodSword);
 	}};
 	
 	public static void printValidIDs() {
