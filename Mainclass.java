@@ -10,12 +10,8 @@ public class Mainclass {
 
 	public static void main(String[] args) {
 		System.out.println("Available commands: attack, help, check inventory, pickup, wait, exit");
-		itemInit();
+		validIDs.validateItems();
 		gameLoop();
-	}
-	
-	public static void itemInit() {
-		
 	}
 	
 	public static String peekInv() {

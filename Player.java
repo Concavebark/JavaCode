@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player extends Creature {
-	public List<String> inv = new ArrayList<>(); 
+	public List<Item> inv = new ArrayList<>(); 
 	/*
 	*	Possibly develop method of keeping item stacks, 
 	*	possibly with an Item class stored in an array. 
@@ -16,17 +16,17 @@ public class Player extends Creature {
 	}
 	
 	public void storeInInv(String itemName) {
-		inv.add(itemName);
+		inv.add(Item.stringToItem(itemName));
 	}
 	
-	public List<String> getInventory() {		
-		return inv;
+	public List<Item> getInventory() {		
+		return inv; // change to return display name of the items in the inventory
 	}
 	
 	public int numInInv(String itemName) {
 		int itemCount = 0;
 		for (int i = 0; i < inv.size();) {
-			if (inv.get(i).equals(itemName)) {
+			if (inv.get(i).displayName.equals(itemName)) {
 				itemCount = itemCount + 1;
 			}
 			i = i + 1;
@@ -38,7 +38,7 @@ public class Player extends Creature {
 		try {
 			int index = Integer.parseInt(indexStr);
 			index = index - 1;
-			return inv.get(index);
+			return inv.get(index).displayName;
 		}	
 		catch (Exception IndexOutOfBounds) {
 			return "There are no items in that slot.";

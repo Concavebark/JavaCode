@@ -17,15 +17,36 @@ public class validIDs {
 		put("7", "Stone Shield");
 	}};
 	
-	static String[] a = new String[] {"wood", "wood", "stick"}; 
 	// maybe build a class to deal with a recipe that is then stored in the Item
-	final static Item woodSword = new Item("wood sword", 4, a);
+	
+	public static Item iron = new Item("Iron", null);
+	public static Item wood = new Item("Wood", null);
+	public static Item stone = new Item("Stone", null);
+	
+	// Craftable items
+	public static Item stick = new Item("Stick", new Item[] {wood, wood});
+	public static Item wood_sword = new Item("Wood Sword", new Item[] {wood,wood,stick});
+	public static Item wood_shield = new Item("Wood Shield", new Item[] {wood,wood,wood,iron});
+	public static Item stone_sword = new Item("Stone Sword", new Item[] {stone, stone, stick});
+	public static Item stone_shield = new Item("Stone Shield", new Item[] {stone,stone,stone,iron});
+	
+	public static void validateItems() {
+		Item.itemReg(iron);
+		Item.itemReg(wood);
+		Item.itemReg(stone);
+		Item.itemReg(stick);
+		Item.itemReg(wood_sword);
+		Item.itemReg(stone_sword);
+		Item.itemReg(wood_shield);
+		Item.itemReg(stone_shield);
+	}
+	
 	
 	public static Map<Integer, Item> itemList = new HashMap<Integer, Item>() {
 		private static final long serialVersionUID = 2L;
 
 	{
-		put(4, woodSword);
+		put(4, wood_sword);
 	}};
 	
 	public static void printValidIDs() {
