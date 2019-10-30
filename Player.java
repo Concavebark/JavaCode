@@ -16,11 +16,30 @@ public class Player extends Creature {
 	}
 	
 	public void storeInInv(String itemName) {
-		inv.add(Item.stringToItem(itemName));
+		inv.add(Item.stringToDisplay(itemName));
 	}
 	
-	public List<Item> getInventory() {		
-		return inv; // change to return display name of the items in the inventory
+	public void getInventory() {
+		try {
+			for (int i = 0; i < inv.size(); i++) {
+				System.out.println(inv.get(i).displayName);
+			}
+		}
+		catch (Exception NullPointerException) {
+			System.out.println("Inventory Empty");
+		}
+	}
+	
+	public static Boolean isCraftable(String itemToCraft) {
+		// ex itemToCraft: wood_sword
+		//Item.stringToDisplay(itemToCraft);
+		if (Item.stringToItem(itemToCraft) == null) {
+			System.out.println("IT BROKE AHHHHHHH");
+			return false;
+		} else {
+			System.out.println("Would Craft Now");
+			return true;
+		}
 	}
 	
 	public int numInInv(String itemName) {

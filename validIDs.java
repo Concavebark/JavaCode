@@ -17,6 +17,14 @@ public class validIDs {
 		put("7", "Stone Shield");
 	}};
 	
+	public static Map<String, String> findableItems = new HashMap<String, String>() {
+			private static final long serialVersionUID = 2L;
+		{
+			put("1", "Stick"); 
+			put("2", "Stone");
+			put("3", "Wood");
+		}};
+	
 	// maybe build a class to deal with a recipe that is then stored in the Item
 	
 	public static Item iron = new Item("Iron", null);
@@ -60,6 +68,11 @@ public class validIDs {
 	public static String lookupID(int ID) {
 		String IDToStr = Integer.toString(ID);
 		return idList.get(IDToStr);
+	}
+	
+	public static String lookupFindableID(int ID) {
+		String IDToStr = Integer.toString(ID);
+		return findableItems.get(IDToStr);
 	}
 	
 	public static int returnIDCount() {

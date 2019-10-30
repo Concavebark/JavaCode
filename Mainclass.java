@@ -26,8 +26,7 @@ public class Mainclass {
 		int chance = randGen.nextInt(10);
 		if (chance >= 7) {
 			// Select random item to put on ground
-			int validItemNum = validIDs.returnIDCount();
-			int randItemID = randGen.nextInt(validItemNum) + 1;
+			int randItemID = randGen.nextInt(validIDs.findableItems.size());
 			itemOnFloor = validIDs.lookupID(randItemID);
 		} else {
 			return;
@@ -50,30 +49,20 @@ public class Mainclass {
 	}
 	
 	public static void crafting(String[] splitString) {
-		System.out.println("Entered crafting function");
+		//System.out.println("Entered crafting function");
 		// 0 = adjective, 1 = noun
-		String adjective = splitString[1];
-		String item = splitString[2];
-		if (adjective.equals("wood") || adjective.equals("wooden")) {
-			//sword, shield
-			if (item.equals("sword")) {
-				// check if player has 2 wood and 1 stick
-				if (player.numInInv("wood") >= 2 && player.numInInv("stick") >= 1) {
-					System.out.println("MAKA SWOOORD");
-				}
-			} else if (item.equals("shield")) {
-				// no clue
-				System.out.println("You got here.");
-			}
-		}
+		String strItem = splitString[1].toLowerCase() + "_" + splitString[2].toLowerCase();
+		//String adjective = splitString[1];
+		//String item = splitString[2];
+		Player.isCraftable(strItem);
 	}
-	
 
 	public static void actionParse(String action) {
+		action = action.toLowerCase();
 		String[] splitString = action.split(" ");
 		switch(splitString[0]) {
 			case "craft":
-				if (player.getInventory() != null) {
+				if (player.inv != null) {
 					crafting(splitString);
 				} else {
 					System.out.println("Your Inventory is Empty!");
@@ -85,13 +74,15 @@ public class Mainclass {
 				System.out.println("Available commands: attack, help, check inventory, pickup, wait, exit");
 				break;
 			case "check":
-				System.out.println(player.getInventory());
+				player.getInventory();
 				break;
 			case "pickup":
 				player.storeInInv(itemOnFloor);
 				itemOnFloor = null;
 				break;
 			case "wait":
+				break;
+			case "w":
 				break;
 			case "exit":
 				System.exit(0);
