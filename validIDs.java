@@ -33,9 +33,9 @@ public class validIDs {
 	
 	// Craftable items
 	public static Item stick = new Item("Stick", new Item[] {wood, wood});
-	public static Item wood_sword = new Item("Wood Sword", new Item[] {wood,wood,stick});
+	public static Weapon wood_sword = new Weapon("Wood Sword", new Item[] {wood,wood,stick}, 3);
 	public static Item wood_shield = new Item("Wood Shield", new Item[] {wood,wood,wood,iron});
-	public static Item stone_sword = new Item("Stone Sword", new Item[] {stone, stone, stick});
+	public static Weapon stone_sword = new Weapon("Stone Sword", new Item[] {stone, stone, stick}, 4);
 	public static Item stone_shield = new Item("Stone Shield", new Item[] {stone,stone,stone,iron});
 	
 	public static void validateItems() {
@@ -48,14 +48,6 @@ public class validIDs {
 		Item.itemReg(wood_shield);
 		Item.itemReg(stone_shield);
 	}
-	
-	
-	public static Map<Integer, Item> itemList = new HashMap<Integer, Item>() {
-		private static final long serialVersionUID = 2L;
-
-	{
-		put(4, wood_sword);
-	}};
 	
 	public static void printValidIDs() {
 		int listSize = idList.size();

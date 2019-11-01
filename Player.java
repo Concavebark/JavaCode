@@ -4,12 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player extends Creature {
-	public List<Item> inv = new ArrayList<>(); 
+	public static List<Item> inv = new ArrayList<>(); 
+	public Item inHand;
 	/*
 	*	Possibly develop method of keeping item stacks, 
 	*	possibly with an Item class stored in an array. 
 	*	do more research.
 	*/
+	
+	public void equipInHand(Item itemToEquip) {
+		if (itemToEquip instanceof Weapon) {
+			Mainclass.player.inHand = itemToEquip;
+			Mainclass.player.atk = Weapon.calculateAtk(Mainclass.player, (Weapon) itemToEquip);
+			removeFromInv(itemToEquip);
+		}
+	}
 	
 	public void setName(String newPlayerName) {
 		this.name = newPlayerName;
@@ -19,6 +28,14 @@ public class Player extends Creature {
 		inv.add(Item.stringToDisplay(itemName));
 	}
 	
+	public static void removeFromInv(Item itemName) {
+		for (int i = 0; i < inv.size(); i++) {
+			if (inv.get(i).equals(itemName)) {
+				inv.remove(i);
+			} 
+		}
+	}
+	
 	public void getInventory() {
 		try {
 			for (int i = 0; i < inv.size(); i++) {
@@ -26,18 +43,16 @@ public class Player extends Creature {
 			}
 		}
 		catch (Exception NullPointerException) {
-			System.out.println("Inventory Empty");
+			
 		}
 	}
 	
 	public static Boolean isCraftable(String itemToCraft) {
 		// ex itemToCraft: wood_sword
-		//Item.stringToDisplay(itemToCraft);
 		if (Item.stringToItem(itemToCraft) == null) {
-			System.out.println("IT BROKE AHHHHHHH");
+			System.out.println("That item is un-craftable");
 			return false;
 		} else {
-			System.out.println("Would Craft Now");
 			return true;
 		}
 	}
@@ -64,7 +79,7 @@ public class Player extends Creature {
 		}
 	}
 	
-	public Player(String name, int health) {
-		super(name, health);
+	public Player(String name, int health, int atk) {
+		super(name, health, atk);
 	}
 }
