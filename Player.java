@@ -79,7 +79,7 @@ public class Player extends Creature {
 		}
 	}
 	
-	public Player(String name, int health, int atk) {
-		super(name, health, atk);
+	public Player(String name, int health, int atk, Armor Head, Armor Chest, Armor Legs, Armor Feet, Item onHand, Item offHand) {
+		super(name, health, atk, Head, Chest, Legs, Feet, onHand, offHand);
 	}
 }

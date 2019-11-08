@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Mainclass {
-	public static Player player = new Player("No Name", 100, 1);
+	public static Player player = new Player("No Name", 100, 1, null, null, null, null, null, null);
 	public static Random randGen = new Random();
 	public static String itemOnFloor;
 
