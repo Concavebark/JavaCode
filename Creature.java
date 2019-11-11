@@ -1,5 +1,6 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Creature {
@@ -13,10 +14,19 @@ public class Creature {
 	public Item ON_HAND;
 	public Item OFF_HAND;
 	
-	public List<Item> isWearing(Creature creature) {
+	public List<Armor> isWearing(Creature creature) {
+		List<Armor> wearing = new ArrayList<Armor>();
+		wearing.add(HEAD_ARMOR);
+		wearing.add(CHEST_ARMOR);
+		wearing.add(LEG_ARMOR);
+		wearing.add(FEET_ARMOR);
 		
-		
-		return null;
+		return wearing;
+	}
+	
+	public int getIntProtectValue(Creature creature) {
+		int totalProtectValue = HEAD_ARMOR.protection_value + CHEST_ARMOR.protection_value + LEG_ARMOR.protection_value + FEET_ARMOR.protection_value;
+		return totalProtectValue;
 	}
 	
 	public Creature(String name, int health, int atk, Armor Head, Armor Chest, Armor Leg, Armor Feet, Item ON_HAND, Item OFF_HAND) {
