@@ -31,7 +31,7 @@ public class Creature {
 		return totalProtectValue;
 	}
 	
-	public Creature generateRandomCreature() {
+	public static Creature generateRandomCreature() {
 		int wearingArmor = randWeight.nextInt(2);
 		int somethingInOnHand = randWeight.nextInt(2);
 		int somethingInOffHand = randWeight.nextInt(2);

@@ -29,7 +29,8 @@ public class Mainclass {
 			int randItemID = randGen.nextInt(validIDs.findableItems.size() + 1);
 			itemOnFloor = validIDs.lookupFindableID(randItemID);
 		} else if (chance <= 4) {
-			
+			Creature encounterCreature = Creature.generateRandomCreature();
+			System.out.println("A creature approaches!" + " " + encounterCreature.name);
 		}
 	}
 	
