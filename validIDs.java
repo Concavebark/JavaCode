@@ -23,6 +23,7 @@ public class validIDs {
 			put("1", "Stick"); 
 			put("2", "Stone");
 			put("3", "Wood");
+			put("4", "Iron");
 		}};
 	
 	// maybe build a class to deal with a recipe that is then stored in the Item
@@ -32,21 +33,36 @@ public class validIDs {
 	public static Item stone = new Item("Stone", null);
 	
 	// Craftable items
-	public static Item stick = new Item("Stick", new Item[] {wood, wood});
+	public static Item stick = new Item("Stick", new Item[] {wood});
 	public static Weapon wood_sword = new Weapon("Wood Sword", new Item[] {wood,wood,stick}, 3);
-	public static Item wood_shield = new Item("Wood Shield", new Item[] {wood,wood,wood,iron});
+	public static Shield wood_shield = new Shield("Wood Shield", new Item[] {wood,wood,wood,iron});
 	public static Weapon stone_sword = new Weapon("Stone Sword", new Item[] {stone, stone, stick}, 4);
-	public static Item stone_shield = new Item("Stone Shield", new Item[] {stone,stone,stone,iron});
+	public static Shield stone_shield = new Shield("Stone Shield", new Item[] {stone,stone,stone,iron});
+	
+	//Iron Armor
+	public static Weapon iron_sword = new Weapon("Iron Sword", new Item[] {stick, iron, iron}, 6);
+	public static Armor iron_helm = new Armor("Iron Helmet", new Item[] {iron, iron, iron, iron, iron}, 4, "HEAD_ARMOR");
+	public static Armor iron_chest = new Armor("Iron Chestplate", new Item[] {iron, iron, iron, iron, iron, iron, iron, iron}, 5, "CHEST_ARMOR");
+	public static Armor iron_leg = new Armor("Iron Leggings", new Item[] {iron, iron, iron, iron, iron, iron, iron}, 3, "LEG_ARMOR");
+	public static Armor iron_boots = new Armor("Iron Feets", new Item[] {iron, iron, iron, iron}, 2, "FEET_ARMOR");
 	
 	public static void validateItems() {
 		Item.itemReg(iron);
 		Item.itemReg(wood);
 		Item.itemReg(stone);
 		Item.itemReg(stick);
-		Item.itemReg(wood_sword);
-		Item.itemReg(stone_sword);
-		Item.itemReg(wood_shield);
-		Item.itemReg(stone_shield);
+		
+		Weapon.weaponReg(wood_sword);
+		Weapon.weaponReg(stone_sword);
+		Weapon.weaponReg(iron_sword);
+		
+		Shield.shieldReg(wood_shield);
+		Shield.shieldReg(stone_shield);
+		
+		Armor.armorReg(iron_helm);
+		Armor.armorReg(iron_chest);
+		Armor.armorReg(iron_leg);
+		Armor.armorReg(iron_boots);
 	}
 	
 	public static void printValidIDs() {

@@ -8,7 +8,6 @@ public class Item {
 	public String displayName;
 	public static List<Item> registeredItems = new ArrayList<>();
 	public static List<Item> craftableItems = new ArrayList<>();
-	public static List<Item> weapons = new ArrayList<>();
 
 	// If recipe returns Null, there is no way to synthesize the item 
 	
@@ -21,7 +20,7 @@ public class Item {
 		registeredItems.add(newItem);
 		if (newItem.recipe != null) {
 			craftableItems.add(newItem);
-		}
+		} 
 	}
 	
 	public static Item stringToDisplay(String checkName) {

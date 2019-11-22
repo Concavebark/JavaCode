@@ -4,12 +4,13 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Mainclass {
-	public static Player player = new Player("No Name", 100, 1, null, null, null, null, null, null);
+	public static Player player = new Player("No Name", 100, 1, null, null, null, null, null, null); 
 	public static Random randGen = new Random();
 	public static String itemOnFloor;
+	private static String commandList = "Available commands: attack, help, check inventory, equip, craft, pickup, wait, exit";
 
 	public static void main(String[] args) {
-		System.out.println("Available commands: attack, help, check inventory, equip, pickup, wait, exit");
+		System.out.println(commandList);
 		validIDs.validateItems();
 		gameLoop();
 	}
@@ -23,12 +24,12 @@ public class Mainclass {
 	}
 	
 	public static void chanceCalc() {
-		int chance = randGen.nextInt(10);
+		int chance = randGen.nextInt(11);
 		if (chance >= 7) {
-			int randItemID = randGen.nextInt(validIDs.findableItems.size());
-			itemOnFloor = validIDs.lookupID(randItemID);
-		} else {
-			return;
+			int randItemID = randGen.nextInt(validIDs.findableItems.size() + 1);
+			itemOnFloor = validIDs.lookupFindableID(randItemID);
+		} else if (chance <= 4) {
+			
 		}
 	}
 	
@@ -85,18 +86,19 @@ public class Mainclass {
 				break;
 			case "equip":
 				try {
-					String sanitize = Item.displayNameToItemName(splitString[1] + " " + splitString[2]);
+					String sanitize = new String();
+					sanitize = Item.displayNameToItemName(splitString[1] + " " + splitString[2]);
 					Item itemToEquip = Item.stringToItem(sanitize);
 					player.equipInHand(itemToEquip);
 				} catch (Exception ArrayIndexOutOfBoundsException) {
-					System.out.println("Type out the name of what you want to craft.");
+					System.out.println("Type out the name of what you want to equip.");
 				}
 				break;
 			case "attack":
 				System.out.println(player.atk);
 				break;
 			case "help":
-				System.out.println("Available commands: attack, help, check inventory, equip, pickup, wait, exit");
+				System.out.println(commandList);
 				break;
 			case "check":
 				player.getInventory();

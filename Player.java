@@ -50,7 +50,7 @@ public class Player extends Creature {
 	public static Boolean isCraftable(String itemToCraft) {
 		// ex itemToCraft: wood_sword
 		if (Item.stringToItem(itemToCraft) == null) {
-			System.out.println("That item is un-craftable");
+			System.out.println("That item is not craftable");
 			return false;
 		} else {
 			return true;
