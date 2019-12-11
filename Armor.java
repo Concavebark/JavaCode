@@ -10,6 +10,7 @@ public class Armor extends Item {
 	
 	public static void armorReg(Armor armorToReg) {
 		armorList.add(armorToReg);
+		Item.itemReg(armorToReg);
 	}
 	
 	//currentHp, each armor piece, damage being done 

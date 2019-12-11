@@ -9,6 +9,7 @@ public class Weapon extends Item {
 	
 	public static void weaponReg(Weapon weaponToRegister) {
 		weaponList.add(weaponToRegister);
+		Item.itemReg(weaponToRegister);
 	}
 	
 	public static int calculateAtk(Creature creature, Weapon equippedWeapon) {

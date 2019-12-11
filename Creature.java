@@ -47,13 +47,13 @@ public class Creature {
 		if (somethingInOnHand == 1) {
 			int weaponListSize = Weapon.weaponList.size();
 			//int randomWeapon = randWeight.nextInt(weaponListSize + 1);
-			Weapon randomWeapon = Weapon.weaponList.get(randWeight.nextInt(weaponListSize + 1));
+			Weapon randomWeapon = Weapon.weaponList.get(randWeight.nextInt(weaponListSize));
 			randomCreature.ON_HAND = randomWeapon;
 			randomCreature.atk = baseAtk + randomWeapon.atkInfluence;
 		}
 		if (somethingInOffHand == 1) {
 			int shieldListSize = Shield.shieldList.size();
-			int randomShield = randWeight.nextInt(shieldListSize + 1);
+			int randomShield = randWeight.nextInt(shieldListSize);
 			randomCreature.OFF_HAND = Shield.shieldList.get(randomShield);
 		}
 		return randomCreature;

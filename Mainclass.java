@@ -8,6 +8,7 @@ public class Mainclass {
 	public static Random randGen = new Random();
 	public static String itemOnFloor;
 	private static String commandList = "Available commands: attack, help, check inventory, equip, craft, pickup, wait, exit";
+	public static Creature encounterCreature;
 
 	public static void main(String[] args) {
 		System.out.println(commandList);
@@ -29,8 +30,11 @@ public class Mainclass {
 			int randItemID = randGen.nextInt(validIDs.findableItems.size() + 1);
 			itemOnFloor = validIDs.lookupFindableID(randItemID);
 		} else if (chance <= 4) {
-			Creature encounterCreature = Creature.generateRandomCreature();
+			encounterCreature = Creature.generateRandomCreature();
 			System.out.println("A creature approaches!" + " " + encounterCreature.name);
+		} else {
+			itemOnFloor = null;
+			encounterCreature = null;
 		}
 	}
 	
@@ -96,7 +100,9 @@ public class Mainclass {
 				}
 				break;
 			case "attack":
-				System.out.println(player.atk);
+				if (encounterCreature != null) {
+					CombatPhase.phaseLoop(encounterCreature, player);
+				}
 				break;
 			case "help":
 				System.out.println(commandList);

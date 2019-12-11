@@ -8,6 +8,7 @@ public class Shield extends Item {
 	
 	public static void shieldReg(Shield newShield) {
 		shieldList.add(newShield);
+		Item.itemReg(newShield);
 	}
 	
 	public Shield(String displayName, Item[] recipe) {
